@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-testing</a> &gt; <a href="index.source.html" class="el_package">id.test.springboottesting.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package id.test.springboottesting.service;
+
+import id.test.springboottesting.exception.UserRegistrationException;
+import id.test.springboottesting.model.User;
+import id.test.springboottesting.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+/***
+ * Project Name     : spring-boot-testing
+ * Username         : Teten Nugraha
+ * Date Time        : 12/18/2019
+ * Telegram         : @tennugraha
+ */
+
+@Service
+@Transactional
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    @Autowired
+<span class="fc" id="L27">    public UserService(UserRepository userRepository) {</span>
+<span class="fc" id="L28">        this.userRepository = userRepository;</span>
+<span class="fc" id="L29">    }</span>
+
+    public Optional&lt;User&gt; login(String email, String password) {
+<span class="nc" id="L32">        return userRepository.login(email, password);</span>
+    }
+
+    public User createUser(User user) {
+<span class="fc" id="L36">        Optional&lt;User&gt; userOptional = userRepository.findByEmail(user.getEmail());</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if(userOptional.isPresent()) {</span>
+<span class="fc" id="L38">            throw new UserRegistrationException(&quot;User with email &quot;+ user.getEmail()+&quot; already exists&quot;);</span>
+        }
+
+<span class="fc" id="L41">        return userRepository.save(user);</span>
+    }
+
+    public User updateUser(User user) {
+<span class="fc" id="L45">        return userRepository.save(user);</span>
+    }
+
+    public List&lt;User&gt; findAllUsers() {
+<span class="fc" id="L49">        return userRepository.findAll();</span>
+    }
+
+    public Optional&lt;User&gt; findUserById(Long id) {
+<span class="fc" id="L53">        return userRepository.findById(id);</span>
+    }
+
+    public void deleteUserById(Long id) {
+<span class="fc" id="L57">        userRepository.deleteById(id);</span>
+<span class="fc" id="L58">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

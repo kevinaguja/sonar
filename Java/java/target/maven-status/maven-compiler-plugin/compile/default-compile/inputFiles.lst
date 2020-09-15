@@ -1,0 +1,7 @@
+/home/ec2-user/spring-boot-rest-api/src/main/java/id/test/springboottesting/exception/UserRegistrationException.java
+/home/ec2-user/spring-boot-rest-api/src/main/java/id/test/springboottesting/controller/UserController.java
+/home/ec2-user/spring-boot-rest-api/src/main/java/id/test/springboottesting/model/User.java
+/home/ec2-user/spring-boot-rest-api/src/main/java/id/test/springboottesting/repository/UserRepository.java
+/home/ec2-user/spring-boot-rest-api/src/main/java/id/test/springboottesting/service/UserService.java
+/home/ec2-user/spring-boot-rest-api/src/main/java/id/test/springboottesting/SpringBootTestingApplication.java
+/home/ec2-user/spring-boot-rest-api/src/main/java/id/test/springboottesting/exception/ExceptionHandling.java
